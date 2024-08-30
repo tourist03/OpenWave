@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
   render() {
@@ -6,9 +7,9 @@ export default class Navbar extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
-            <a className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
               OpenWave
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -25,55 +26,41 @@ export default class Navbar extends Component {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                
                 <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    aria-current="page"
-                    href="/home"
-                  >
-                    Home
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/about">
-                    About
-                  </a>
-                </li>
-
-                <li className="nav-item">
-                  <a className="nav-link" href="/business">
+                  <Link className="nav-link" to="/">
                     Business
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/Entertainment">
+                  <Link className="nav-link" to="/entertainment">
                     Movies
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/General">
+                  <Link className="nav-link" to="/technology">
                     Tech
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/health">
+                  <Link className="nav-link" to="/health">
                     Health
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/Science">
-                    Science 
-                  </a>
+                  <Link className="nav-link" to="/science">
+                    Science
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/Sports">
+                  <Link className="nav-link" to="/sports">
                     Sports
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/Technology">
-                    Artificail Intelligence 
-                  </a>
+                  <Link className="nav-link" to="/AI">
+                    Artificail Intelligence
+                  </Link>
                 </li>
               </ul>
               <form className="d-flex" role="search">
