@@ -47,12 +47,12 @@ export default class Navbar extends Component {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/Entertainment">
-                    Entertainment
+                    Movies
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/General">
-                    General
+                    Tech
                   </a>
                 </li>
                 <li className="nav-item">
@@ -62,17 +62,17 @@ export default class Navbar extends Component {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/Science">
-                    Science{" "}
+                    Science 
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/Sports">
-                    Sports{" "}
+                    Sports
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/Technology">
-                    Technology{" "}
+                    Artificail Intelligence 
                   </a>
                 </li>
               </ul>
