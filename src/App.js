@@ -15,31 +15,31 @@ export default class App extends Component {
             
             <Route
               exact path="/"
-              element={<News key = "business" pageSize={15} category="business" />}
+              element={<News key = "business" pageSize={15} category="business" category2="StockMarket"/>}
             />
             <Route
               exact path="/entertainment"
-              element={<News key = "entertainment" pageSize={15} category="entertainment" />}
+              element={<News key = "entertainment" pageSize={15} category="entertainment" category2="WebSeries"/>}
             />
             <Route
               exact path="/technology"
-              element={<News key = "technology" pageSize={15} category="technology" />}
+              element={<News key = "technology" pageSize={15} category="Engineering" category2="Space" />}
             />
             <Route
-              exact path="/health"
-              element={<News key = "health" pageSize={15} category="health" />}
+              exact path="/lifestyle"
+              element={<News key = "lifestyle" pageSize={15} category="lifestyle" category2="Personal Health"/>}
             />
             <Route
               exact path="/science"
-              element={<News key = "science" pageSize={15} category="science" />}
+              element={<News key = "science" pageSize={15} category="science" category2="Rockets" />}
             />
             <Route
               exact path="/sports"
-              element={<News key = "sports" pageSize={15} category="sports" />}
+              element={<News key = "sports" pageSize={15} category="cricket" category2="football"/>}
             />
             <Route
               exact path="/AI"
-              element={<News key = "AI" pageSize={15} category="AI" />}
+              element={<News key = "AI" pageSize={15} category="AI" category2="MachineLearning"/>}
             />
           </Routes>
         </Router>
