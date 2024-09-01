@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 import LoadingSpinner from "./LoadingSpinner";
 import PropTypes from "prop-types";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export class News extends Component {
   static defaultProps = {
@@ -16,16 +17,20 @@ export class News extends Component {
     category2: PropTypes.string,
     date: PropTypes.any,
   };
+  capatilize = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
 
   constructor(props) {
     super(props);
     this.state = {
       articles: [],
-      loading: false,
+      loading: true,
       page: 1,
       totalResults: 0,
       hasMoreArticles: true,
     };
+    document.title = `${this.capatilize(this.props.category)} - OpenWave`;
   }
 
   async componentDidMount() {
@@ -71,73 +76,54 @@ export class News extends Component {
     }
   };
 
-  handleNextClick = async () => {
-    //console.log("next");
-    if (
-      this.state.page + 1 <=
-      Math.ceil(this.state.totalResults / this.props.pageSize)
-    ) {
-      this.setState(
-        (prevState) => ({ page: prevState.page + 1 }),
-        this.fetchArticles
-      );
-    }
-  };
+  fetchMoreData = async () => {
+    this.setState({ page: this.state.page + 1 });
+    const url = `https://newsapi.org/v2/everything?q=${this.props.category}&q=${this.props.category2}&from=2024-08-20&sortBy=publishedAt&apiKey=670b2f702b4444e2a5e2d1cc01ef8722&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const data = await fetch(url);
+    const parseData = await data.json();
 
-  handlePrevClick = async () => {
-    //console.log("Prev");
-    if (this.state.page > 1) {
-      this.setState(
-        (prevState) => ({ page: prevState.page - 1 }),
-        this.fetchArticles
-      );
-    }
+    this.setState({
+      articles: this.state.articles.concat(parseData.articles),
+      totalResults: parseData.totalResults
+    });
   };
 
   render() {
     return (
-      <div className="container my-4">
+      <>
         <h1 className="text-center" style={{ margin: "35px 40px" }}>
-          OpenWave - Top Headline
+          OpenWave - Top {this.capatilize(this.props.category)} Headline
         </h1>
-        {this.state.loading && <LoadingSpinner />}
-        <div className="row">
-          {!this.state.loading &&
-            this.state.articles.map((element) => {
-              return (
-                <div className="col-md-4" key={element.url}>
-                  <NewsItem
-                    title={element.title ? element.title : ""}
-                    description={element.description ? element.description : ""}
-                    ImageURL={element.urlToImage}
-                    newsURL={element.url}
-                    author={element.author}
-                    date={element.publishedAt}
-                    source = {element.source.name}
-                  />
-                </div>
-              );
-            })}
-        </div>
-        <div className="container d-flex justify-content-between">
-          <button
-            disabled={this.state.page <= 1}
-            type="button"
-            className="btn btn-outline-success"
-            onClick={this.handlePrevClick}
-          >
-            &larr; Previous
-          </button>
-          <button
-            disabled={!this.state.hasMoreArticles}
-            type="button"
-            className="btn btn-outline-success"
-            onClick={this.handleNextClick}
-          >
-            Next &rarr;
-          </button>
-        </div>
-      </div>
+        {this.state.loading && <LoadingSpinner/> }
+        <InfiniteScroll
+          dataLength={this.state.articles.length}
+          next={this.fetchMoreData}
+          hasMore={this.state.articles.length !== this.state.totalResults}
+          loader={<LoadingSpinner />}
+        >
+          <div className="container">
+            <div className="row">
+              {this.state.articles.map((element) => {
+                return (
+                  <div className="col-md-4" key={element.url}>
+                    <NewsItem
+                      title={element.title ? element.title : ""}
+                      description={
+                        element.description ? element.description : ""
+                      }
+                      ImageURL={element.urlToImage}
+                      newsURL={element.url}
+                      author={element.author}
+                      date={element.publishedAt}
+                      source={element.source.name}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </InfiniteScroll>
+      </>
     );
   }
 }

@@ -34,17 +34,17 @@ export default class Navbar extends Component {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/entertainment">
-                    Movies
+                    Entertainment
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/technology">
-                    Tech
+                    Technology
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/lifestyle">
-                    Health 
+                    Health & LifeStyle
                   </Link>
                 </li>
                 <li className="nav-item">
