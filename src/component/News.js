@@ -39,11 +39,8 @@ export class News extends Component {
 
   fetchArticles = async () => {
     try {
-      //const url = `https://newsapi.org/v2/everything?q=${this.props.category}&apiKey=d8f429a783e54d9daae50adde8627f2e&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-      //const url = `https://newsapi.org/v2/everything?q=${this.props.category}&from=${this.props.date}&sortBy=publishedAt&apiKey=670b2f702b4444e2a5e2d1cc01ef8722&page=${this.state.page}&pageSize=${this.props.pageSize}`;
       this.props.setProgress(10);
-      //const url = `https://newsapi.org/v2/everything?q=${this.props.category}&q=${this.props.category2}&from=2024-08-20&sortBy=publishedAt&apiKey=670b2f702b4444e2a5e2d1cc01ef8722&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-      const url = `https://newsapi.org/v2/everything?q=${this.props.category}&q=${this.props.category2}&from=2024-08-20&sortBy=publishedAt&apiKey=d8f429a783e54d9daae50adde8627f2e&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+      const url = `https://newsapi.org/v2/everything?q=${this.props.category}&q=${this.props.category2}&from=2024-08-20&sortBy=publishedAt&apiKey=${this.props.apikey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
       const data = await fetch(url);
       this.props.setProgress(40);
       const parseData = await data.json();
