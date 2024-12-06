@@ -8,7 +8,7 @@ const News = ({
   pageSize = 8,
   category = "Science",
   category2 = "football",
-  date = "2024-08-20",
+  date = "2024-12-02",
   apikey,
   setProgress
 }) => {
@@ -30,7 +30,7 @@ const News = ({
   const fetchArticles = async () => {
     try {
       setProgress(10);
-      const url = `https://newsapi.org/v2/everything?q=${category}&q=${category2}&from=2024-08-20&sortBy=publishedAt&apiKey=${apikey}&page=${page}&pageSize=${pageSize}`;
+      const url = `https://newsapi.org/v2/everything?q=${category}&q=${category2}&from=${date}&sortBy=publishedAt&apiKey=${apikey}&page=${page}&pageSize=${pageSize}`;
       const data = await fetch(url);
       setProgress(40);
       const parseData = await data.json();
@@ -64,7 +64,7 @@ const News = ({
 
   const fetchMoreData = async () => {
     
-    const url = `https://newsapi.org/v2/everything?q=${category}&q=${category2}&from=2024-08-20&sortBy=publishedAt&apiKey=670b2f702b4444e2a5e2d1cc01ef8722&page=${page+1}&pageSize=${pageSize}`;
+    const url = `https://newsapi.org/v2/everything?q=${category}&q=${category2}&from=${date}&sortBy=publishedAt&apiKey=${apikey}&page=${page+1}&pageSize=${pageSize}`;
     setPage(page + 1);
     const data = await fetch(url);
     const parseData = await data.json();

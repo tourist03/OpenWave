@@ -28,6 +28,7 @@ const App = () => {
                   pageSize={15}
                   category="business"
                   category2="StockMarket"
+                  date="2024-12-02"
                 />
               }
             />
@@ -42,6 +43,7 @@ const App = () => {
                   pageSize={15}
                   category="entertainment"
                   category2="WebSeries"
+                  date="2024-12-02"
                 />
               }
             />
@@ -56,6 +58,7 @@ const App = () => {
                   pageSize={15}
                   category="Engineering"
                   category2="Space"
+                  date="2024-12-02"
                 />
               }
             />
@@ -70,6 +73,7 @@ const App = () => {
                   pageSize={15}
                   category="lifestyle"
                   category2="Personal Health"
+                  date="2024-12-02"
                 />
               }
             />
@@ -84,6 +88,7 @@ const App = () => {
                   pageSize={15}
                   category="science"
                   category2="Rockets"
+                  date="2024-12-02"
                 />
               }
             />
@@ -98,6 +103,7 @@ const App = () => {
                   pageSize={15}
                   category="cricket"
                   category2="football"
+                  date="2024-12-02"
                 />
               }
             />
@@ -112,6 +118,7 @@ const App = () => {
                   pageSize={15}
                   category="AI"
                   category2="MachineLearning"
+                  date="2024-12-02"
                 />
               }
             />
